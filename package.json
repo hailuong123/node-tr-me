@@ -1,0 +1,83 @@
+{
+  "name": "admin-travel-me",
+  "version": "1.0.0",
+  "description": "Travel of me",
+  "scripts": {
+    "start": "npm run build && npm run watch",
+    "grunt": "grunt",
+    "build": "npm run build-ts && npm run tslint",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"nodemon dist/server.js --ignore 'files/*' \"",
+    "clean": "rm -rf node_modules/ dist/",
+    "reinstall": "npm cache --force clean && npm run clean && yarn install",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "test": "jest --forceExit",
+    "postinstall": "npm run build-ts && npm run tslint"
+  },
+  "jest": {
+    "globals": {
+      "__TS_CONFIG__": "tsconfig.json"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/test/**/*.test.(ts|js)"
+    ],
+    "testEnvironment": "node"
+  },
+  "author": "Hai Luong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hailuong123/node-tr-me/issues"
+  },
+  "homepage": "https://github.com/hailuong123/node-tr-me#readme",
+  "devDependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.11.1",
+    "@types/jest": "^22.2.3",
+    "@types/lodash": "^4.14.107",
+    "@types/pug": "^2.0.4",
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.3",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "@types/compression": "0.0.36",
+    "@types/glob": "^5.0.35",
+    "@types/helmet": "0.0.37",
+    "@types/mongodb": "^3.0.15",
+    "class-validator": "^0.8.5",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.2",
+    "grunt": "^1.0.2",
+    "grunt-bootlint": "^0.10.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-image": "^4.2.0",
+    "grunt-includes": "^1.1.0",
+    "grunt-jscs": "^3.0.1",
+    "grunt-notify": "^0.4.5",
+    "grunt-text-replace": "^0.4.0",
+    "hbs": "^4.0.1",
+    "helmet": "^3.12.0",
+    "lodash": "^4.17.5",
+    "mongodb": "^3.0.7",
+    "pug": "^2.0.3"
+  }
+}

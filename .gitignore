@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vscode/
+yarn.lock
+package-lock.json
+.vscode/
+.travis.yml
+.env
+.idea/
