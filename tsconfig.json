@@ -13,6 +13,9 @@
             "*": [
                 "node_modules/*",
                 "src/types/*",
+                "assets/*",
+                "bower_components/*",
+                "src/decorators/*",
                 "src/config/*",
                 "src/lib/*",
                 "src/decorators/*"

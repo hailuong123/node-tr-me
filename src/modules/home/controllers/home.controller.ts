@@ -4,7 +4,7 @@ import { Router, Response, Request, NextFunction } from 'express';
 const router = Router({ mergeParams: true });
 
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
-  res.render('layouts/main', {
+  res.render('home', {
     title: 'Home 1 ',
     content: 'This is Homepage'
   });

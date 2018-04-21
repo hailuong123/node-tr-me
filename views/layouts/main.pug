@@ -1,8 +1,17 @@
 doctype html
-html(lang="en")
+html
   head
     title TravelMe - #{title}
+    
+    include stylesheet
+
   body
-    h1 #{title}
-    #container.col
-      p #{content}
+    include header
+
+    // Import content here
+    block content
+    
+    // Import footer here
+    include footer
+
+    include script

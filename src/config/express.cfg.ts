@@ -1,6 +1,7 @@
 /**
  * Module dependencies.
  */
+import * as express from 'express';
 import { Express, Request, Response, NextFunction } from 'express';
 import * as compression from 'compression';  // compresses requests
 import * as bodyParser from 'body-parser';
@@ -59,6 +60,12 @@ export let initHelmetHeaders = (app: Express) => {
   app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
   // Sets "X-XSS-Protection: 1; mode=block".
   app.use(helmet.xssFilter());
+
+  app.use(
+    express.static(path.join(__dirname, '../../assets')),
+    express.static(path.join(__dirname, '../../bower_components')),
+    express.static(path.join(__dirname, '../../plugins'))
+  );
 
   app.set('view engine', 'pug');
   app.set('views', path.join(__dirname, '../../views'));

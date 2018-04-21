@@ -117,7 +117,7 @@ module.exports = function (grunt) { // jshint ignore:line
       },
       production: {
         files: {
-          'assets/js/adminlte.min.js': ['assets/js/adminlte.js']
+          'assets/js/admintravelme.min.js': ['assets/js/adminlte.js']
         }
       }
     },
@@ -246,7 +246,7 @@ module.exports = function (grunt) { // jshint ignore:line
   // JS task
   grunt.registerTask('js', ['concat', 'uglify'])
   // CSS Task
-  grunt.registerTask('css', ['less:development', 'less:production', 'replace'])
+  grunt.registerTask('css', ['less:development', 'less:production', 'less:skins', 'replace'])
 
   // The default task (running 'grunt' in console) is 'watch'
   grunt.registerTask('default', ['watch'])
