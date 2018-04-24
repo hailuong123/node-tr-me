@@ -1,0 +1,11 @@
+.row
+  .col-lg-12
+      if success_msg
+        .alert.alert-success #{success_msg}
+
+      if error_msg
+        .alert.alert-danger #{error_msg}
+
+      if error
+        .alert.alert-danger #{error}
+          

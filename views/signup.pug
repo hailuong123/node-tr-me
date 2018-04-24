@@ -1,0 +1,81 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title TravelMe | Register
+    // Tell the browser to be responsive to screen width
+    meta(content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport")
+    // Bootstrap 3.3.7
+    link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
+    // Font Awesome
+    link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
+    // Ionicons
+    link(rel="stylesheet" href="/Ionicons/css/ionicons.min.css")
+    // Theme style
+    link(rel="stylesheet" href="/css/travelme.min.css")
+    // iCheck
+    link(rel="stylesheet" href="/iCheck/square/blue.css")
+    
+    // Google Font
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic")
+
+body.hold-transition.register-page
+  .login-box
+        .login-logo
+          a(href=".")
+            b Admin
+            | LTE
+        // /.login-logo
+        .login-box-body
+          p.login-box-msg Register a new membership
+          include messages/messages
+          form(method="post")
+            .form-group.has-feedback
+              input.form-control(type="text" placeholder="Username" name="username")
+              span.glyphicon.glyphicon-user.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type="email" placeholder="Email" name="email")
+              span.glyphicon.glyphicon-envelope.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type="password" placeholder="Password" name="password")
+              span.glyphicon.glyphicon-lock.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type="password" placeholder="Retype password" name="cfmPassword")
+              span.glyphicon.glyphicon-log-in.form-control-feedback
+            .row
+              .col-xs-8
+                .checkbox.icheck
+                  label
+                    input(type="checkbox")
+                    |  I agree to the 
+                    a(href="#") terms
+              // /.col
+              .col-xs-4
+                button.btn.btn-primary.btn-block.btn-flat(type="submit") Register
+          .social-auth-links.text-center
+            p - OR -
+            a.btn.btn-block.btn-social.btn-facebook.btn-flat(href="#")
+              i.fa.fa-facebook
+              |  Sign up using
+              |         Facebook
+            a.btn.btn-block.btn-social.btn-google.btn-flat(href="#")
+              i.fa.fa-google-plus
+              |  Sign up using
+              |         Google+
+          a.text-center(href="/user/login") I already have a membership
+
+  // script
+  script(src="/jquery/dist/jquery.min.js")
+
+  script(src="/bootstrap/dist/js/bootstrap.min.js")
+
+  script(src="/iCheck/icheck.min.js")
+  script.
+    $(function () {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+      });
+    });

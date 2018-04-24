@@ -62,8 +62,12 @@ export let initHelmetHeaders = (app: Express) => {
   app.use(helmet.xssFilter());
 
   app.use(
-    express.static(path.join(__dirname, '../../assets')),
-    express.static(path.join(__dirname, '../../bower_components')),
+    express.static(path.join(__dirname, '../../assets'))
+  );
+  app.use(
+    express.static(path.join(__dirname, '../../bower_components'))
+  );
+  app.use(
     express.static(path.join(__dirname, '../../plugins'))
   );
 

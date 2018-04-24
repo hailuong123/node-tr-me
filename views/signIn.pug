@@ -7,15 +7,15 @@ html
     // Tell the browser to be responsive to screen width
     meta(content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport")
     // Bootstrap 3.3.7
-    link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
     // Font Awesome
-    link(rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css")
+    link(rel="stylesheet" href="/font-awesome/css/font-awesome.min.css")
     // Ionicons
-    link(rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css")
+    link(rel="stylesheet" href="/Ionicons/css/ionicons.min.css")
     // Theme style
     link(rel="stylesheet" href="/css/travelme.min.css")
     // iCheck
-    link(rel="stylesheet" href="/plugins/iCheck/square/blue.css")
+    link(rel="stylesheet" href="/iCheck/square/blue.css")
     
     // Google Font
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic")
@@ -29,7 +29,8 @@ body.hold-transition.login-page
         // /.login-logo
         .login-box-body
           p.login-box-msg Sign in to start your session
-          form(action="." method="post")
+          include messages/messages
+          form(method="post" onSubmit={function(e) { e.preventDefault(); this.submit('/user/register')}})
             .form-group.has-feedback
               input.form-control(type="email" placeholder="Email")
               span.glyphicon.glyphicon-envelope.form-control-feedback
@@ -59,41 +60,36 @@ body.hold-transition.login-page
           // /.social-auth-links
           a(href="#") I forgot my password
           br
-          a.text-center(href="register.html") Register a new membership
+          a.text-center(href="/user/register") Register a new membership
         // /.login-box-body
 
-  script(src="/bower_components/jquery/dist/jquery.min.js")
+  script(src="/jquery/dist/jquery.min.js")
     // jQuery UI 1.11.4
-    script(src="/bower_components/jquery-ui/jquery-ui.min.js")
+    script(src="/jquery-ui/jquery-ui.min.js")
     // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
     script.
       $.widget.bridge('uibutton', $.ui.button);
     // Bootstrap 3.3.7
-    script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/bootstrap/dist/js/bootstrap.min.js")
     // Morris.js charts
-    script(src="/bower_components/raphael/raphael.min.js")
-    script(src="/bower_components/morris.js/morris.min.js")
+    script(src="/raphael/raphael.min.js")
+    script(src="/morris.js/morris.min.js")
     // Sparkline
-    script(src="/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js")
+    script(src="/jquery-sparkline/dist/jquery.sparkline.min.js")
     // jvectormap
-    script(src="/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js")
-    script(src="/plugins/jvectormap/jquery-jvectormap-world-mill-en.js")
+    script(src="/jvectormap/jquery-jvectormap-1.2.2.min.js")
+    script(src="/jvectormap/jquery-jvectormap-world-mill-en.js")
     // jQuery Knob Chart
-    script(src="/bower_components/jquery-knob/dist/jquery.knob.min.js")
+    script(src="/jquery-knob/dist/jquery.knob.min.js")
     // daterangepicker
-    script(src="/bower_components/moment/min/moment.min.js")
-    script(src="/bower_components/bootstrap-daterangepicker/daterangepicker.js")
+    script(src="/moment/min/moment.min.js")
+    script(src="/bootstrap-daterangepicker/daterangepicker.js")
     // datepicker
-    script(src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+    script(src="/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
     // Bootstrap WYSIHTML5
-    script(src="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")
+    script(src="/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")
     // Slimscroll
-    script(src="/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")
+    script(src="/jquery-slimscroll/jquery.slimscroll.min.js")
     // FastClick
-    script(src="/bower_components/fastclick/lib/fastclick.js")
-    // AdminLTE App
-    script(src="/dist/js/adminlte.min.js")
-    // AdminLTE dashboard demo (This is only for demo purposes)
-    script(src="/dist/js/pages/dashboard.js")
-    // AdminLTE for demo purposes
-    script(src="/dist/js/demo.js")
+    script(src="/fastclick/lib/fastclick.js")
+    script(src="/js/travelme.js")
