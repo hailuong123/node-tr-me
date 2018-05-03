@@ -47,6 +47,7 @@
     "dotenv": "^5.0.1",
     "jest": "^22.4.3",
     "nodemon": "^1.17.3",
+    "passport": "^0.4.0",
     "tslint": "^5.9.1",
     "typescript": "^2.8.1"
   },
@@ -55,6 +56,7 @@
     "@types/glob": "^5.0.35",
     "@types/helmet": "0.0.37",
     "@types/mongodb": "^3.0.15",
+    "@types/passport-facebook": "^2.1.8",
     "class-validator": "^0.8.5",
     "compression": "^1.7.2",
     "express": "^4.16.3",
@@ -76,9 +78,13 @@
     "grunt-text-replace": "^0.4.0",
     "hbs": "^4.0.1",
     "helmet": "^3.12.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",
     "mongodb": "^3.0.7",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "rxjs": "^5.5.10"
   }

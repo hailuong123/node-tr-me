@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as glob from 'glob';
-import { MongoClient, MongoClientOptions, ObjectID } from 'mongodb';
+import { Db, MongoClient, MongoClientOptions, ObjectID } from 'mongodb';
 
 let dbInstance: MongoClient;
 
@@ -38,11 +38,11 @@ export let connectDB = async (
 /**
  * get DB instance for further using
  */
-export let getDbInstance = (): MongoClient => {
+export let getDbInstance = (): Db => {
   if (!dbInstance) {
     throw 'Database is not yet instantiated';
   }
-  return dbInstance;
+  return dbInstance.db();
 };
 
 export let generateObjectId = (): ObjectID => {
@@ -61,7 +61,7 @@ export let indexDb = async (isIndexing: boolean) => {
     });
     const tasks = [] as any;
     indexInstances.forEach((item: any) => {
-      const collection = getDbInstance().db().collection(`${process.env.MONGO_TABLE_PREFIX}${item.collection}`);
+      const collection = getDbInstance().collection(`${process.env.MONGO_TABLE_PREFIX}${item.collection}`);
       tasks.push(collection.dropIndexes((err: any, result: any) => {
         if (err) {
           console.error(err);

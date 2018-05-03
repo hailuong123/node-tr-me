@@ -1,12 +1,12 @@
-import { IUser } from './user.type';
+import { IUserLocal, IUserAuth } from './user.type';
 import { Observable } from 'rxjs';
 import { DbError } from 'error.lib';
 import { getDbInstance as db } from 'mongo.cfg';
-import { InsertOneWriteOpResult } from 'mongodb';
+import { InsertOneWriteOpResult, ObjectID } from 'mongodb';
 
-const User = db().db().collection(`${process.env.MONGO_TABLE_PREFIX}user`);
+export let User = db().collection(`${process.env.MONGO_TABLE_PREFIX}user`);
 
-export let addUser = (user: IUser): Observable<IUser> => {
+export let addUser = (user: IUserLocal|IUserAuth): Observable<IUserLocal|IUserAuth> => {
   const result = User.insertOne(user, { forceServerObjectId: true });
   return Observable
           .fromPromise(result)
@@ -26,4 +26,12 @@ export let addUser = (user: IUser): Observable<IUser> => {
                 throw new DbError('user.username.existed');
             return Observable.throw(err);
           });
+};
+
+export let findOne = (condition: any) => {
+  if (condition._id) condition._id = new ObjectID(condition._id);
+  const result = User.findOne(condition);
+  return Observable
+          .fromPromise(result)
+          .single();
 };

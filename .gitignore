@@ -7,3 +7,4 @@ package-lock.json
 .travis.yml
 .env
 .idea/
+key/

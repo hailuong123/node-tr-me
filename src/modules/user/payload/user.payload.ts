@@ -1,6 +1,6 @@
 
 import { IsNotEmpty, Length } from 'class-validator';
-import { IUser } from '../models/user.type';
+import { IUserLocal } from '../models/user.type';
 import { generateObjectId } from 'mongo.cfg';
 import * as moment from 'moment';
 
@@ -13,11 +13,11 @@ export class UserRequest {
 
   constructor(body: any) {
     this.username = body.username;
-    this.email = body.email;
+    this.email    = body.email;
     this.password = body.password;
   }
 
-  toAddUserModel(): IUser {
+  toAddUserModel(): IUserLocal {
     const id = generateObjectId();
     return {
       _id     : id,

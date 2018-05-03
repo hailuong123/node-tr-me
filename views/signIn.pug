@@ -6,6 +6,7 @@ html
     title TravelMe | Log in
     // Tell the browser to be responsive to screen width
     meta(content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport")
+    
     // Bootstrap 3.3.7
     link(rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css")
     // Font Awesome
@@ -18,7 +19,7 @@ html
     link(rel="stylesheet" href="/iCheck/square/blue.css")
     
     // Google Font
-    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic")
+    link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300i,400,400i,600,600i,700")
 
 body.hold-transition.login-page
   .login-box
@@ -30,18 +31,18 @@ body.hold-transition.login-page
         .login-box-body
           p.login-box-msg Sign in to start your session
           include messages/messages
-          form(method="post" onSubmit={function(e) { e.preventDefault(); this.submit('/user/register')}})
+          form(method="post")
             .form-group.has-feedback
-              input.form-control(type="email" placeholder="Email")
+              input.form-control(type="email" name="email" placeholder="Email")
               span.glyphicon.glyphicon-envelope.form-control-feedback
             .form-group.has-feedback
-              input.form-control(type="password" placeholder="Password")
+              input.form-control(type="password" name="password" placeholder="Password")
               span.glyphicon.glyphicon-lock.form-control-feedback
             .row
               .col-xs-8
                 .checkbox.icheck
                   label
-                    input(type="checkbox")
+                    input(type="checkbox" class="icheck")
                     |  Remember Me
               // /.col
               .col-xs-4
@@ -49,7 +50,7 @@ body.hold-transition.login-page
               // /.col
           .social-auth-links.text-center
             p - OR -
-            a.btn.btn-block.btn-social.btn-facebook.btn-flat(href="#")
+            a.btn.btn-block.btn-social.btn-facebook.btn-flat(href="/user/auth/facebook")
               i.fa.fa-facebook
               |  Sign in using
               |         Facebook
@@ -63,33 +64,16 @@ body.hold-transition.login-page
           a.text-center(href="/user/register") Register a new membership
         // /.login-box-body
 
+  // script
   script(src="/jquery/dist/jquery.min.js")
-    // jQuery UI 1.11.4
-    script(src="/jquery-ui/jquery-ui.min.js")
-    // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
-    script.
-      $.widget.bridge('uibutton', $.ui.button);
-    // Bootstrap 3.3.7
-    script(src="/bootstrap/dist/js/bootstrap.min.js")
-    // Morris.js charts
-    script(src="/raphael/raphael.min.js")
-    script(src="/morris.js/morris.min.js")
-    // Sparkline
-    script(src="/jquery-sparkline/dist/jquery.sparkline.min.js")
-    // jvectormap
-    script(src="/jvectormap/jquery-jvectormap-1.2.2.min.js")
-    script(src="/jvectormap/jquery-jvectormap-world-mill-en.js")
-    // jQuery Knob Chart
-    script(src="/jquery-knob/dist/jquery.knob.min.js")
-    // daterangepicker
-    script(src="/moment/min/moment.min.js")
-    script(src="/bootstrap-daterangepicker/daterangepicker.js")
-    // datepicker
-    script(src="/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
-    // Bootstrap WYSIHTML5
-    script(src="/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")
-    // Slimscroll
-    script(src="/jquery-slimscroll/jquery.slimscroll.min.js")
-    // FastClick
-    script(src="/fastclick/lib/fastclick.js")
-    script(src="/js/travelme.js")
+
+  script(src="/bootstrap/dist/js/bootstrap.min.js")
+
+  script(src="/iCheck/icheck.min.js")
+  script(src="/js/main.js")
+  script.
+    if (window.location.hash == '#_=_') {
+      window.location.hash = ''; // for older browsers, leaves a # behind
+      history.pushState('', document.title, window.location.pathname); // nice and clean
+      e.preventDefault(); // no page reload
+    }

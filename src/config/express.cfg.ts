@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 import * as express from 'express';
+import * as passport from 'passport';
 import { Express, Request, Response, NextFunction } from 'express';
 import * as compression from 'compression';  // compresses requests
 import * as bodyParser from 'body-parser';
@@ -26,7 +27,7 @@ export let initMiddleware = (app: Express) => {
         // don't compress responses with this request header
         return false;
       }
-      return (/json|text|javascript|css|font|svg/).test(res.getHeader('Content-Type').toString());
+      return (/json|text|javascript|css|font|svg/).test((res.getHeader('Content-Type') || '').toString());
     },
     level: 9
   }));
@@ -44,12 +45,7 @@ export let initHelmetHeaders = (app: Express) => {
   app.use(helmet.noCache());
   app.use(helmet.frameguard());
   app.disable('x-powered-by');
-  app.use(helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
-    }
-  }));
+  
   app.use(helmet.hsts({
     maxAge: sessionTTL,
     includeSubdomains: true,
@@ -58,6 +54,11 @@ export let initHelmetHeaders = (app: Express) => {
   app.use(helmet.ieNoOpen());
   app.use(helmet.noSniff());
   app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+
+  // use passport session
+  app.use(passport.initialize());
+  app.use(passport.session());
+
   // Sets "X-XSS-Protection: 1; mode=block".
   app.use(helmet.xssFilter());
 
@@ -69,6 +70,10 @@ export let initHelmetHeaders = (app: Express) => {
   );
   app.use(
     express.static(path.join(__dirname, '../../plugins'))
+  );
+
+  app.use(
+    express.static(path.join(__dirname, '../../key'))
   );
 
   app.set('view engine', 'pug');
